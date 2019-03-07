@@ -65,7 +65,7 @@ int write_timeout(int fd, unsigned int wait_seconds)
 		timeout.tv_usec = 0;
 
 		do {
-			ret = select(fd + 1, &write_fdset, NULL, NULL, &timeout);
+			ret = select(fd + 1, NULL, &write_fdset, NULL, &timeout);
 		} while (ret < 0 && errno == EINTR);
 
 		if (ret == 0) {
